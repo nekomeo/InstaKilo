@@ -15,6 +15,7 @@
 		6A05B7471EF192F200E1C9A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A05B7451EF192F200E1C9A6 /* LaunchScreen.storyboard */; };
 		6A05B7531EF1AFFB00E1C9A6 /* MyPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A05B7521EF1AFFB00E1C9A6 /* MyPhotoCollectionViewCell.m */; };
 		6A05B7561EF1C00F00E1C9A6 /* PhotoObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A05B7551EF1C00F00E1C9A6 /* PhotoObject.m */; };
+		6A05B7591EF20A2B00E1C9A6 /* HeaderCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A05B7581EF20A2B00E1C9A6 /* HeaderCollectionReusableView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,8 @@
 		6A05B7521EF1AFFB00E1C9A6 /* MyPhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPhotoCollectionViewCell.m; sourceTree = "<group>"; };
 		6A05B7541EF1C00F00E1C9A6 /* PhotoObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoObject.h; sourceTree = "<group>"; };
 		6A05B7551EF1C00F00E1C9A6 /* PhotoObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoObject.m; sourceTree = "<group>"; };
+		6A05B7571EF20A2B00E1C9A6 /* HeaderCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderCollectionReusableView.h; sourceTree = "<group>"; };
+		6A05B7581EF20A2B00E1C9A6 /* HeaderCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderCollectionReusableView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +71,8 @@
 				6A05B73B1EF192F100E1C9A6 /* AppDelegate.m */,
 				6A05B73D1EF192F100E1C9A6 /* ViewController.h */,
 				6A05B73E1EF192F100E1C9A6 /* ViewController.m */,
+				6A05B7571EF20A2B00E1C9A6 /* HeaderCollectionReusableView.h */,
+				6A05B7581EF20A2B00E1C9A6 /* HeaderCollectionReusableView.m */,
 				6A05B7401EF192F100E1C9A6 /* Main.storyboard */,
 				6A05B7541EF1C00F00E1C9A6 /* PhotoObject.h */,
 				6A05B7551EF1C00F00E1C9A6 /* PhotoObject.m */,
@@ -160,6 +165,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A05B7591EF20A2B00E1C9A6 /* HeaderCollectionReusableView.m in Sources */,
 				6A05B7561EF1C00F00E1C9A6 /* PhotoObject.m in Sources */,
 				6A05B73F1EF192F100E1C9A6 /* ViewController.m in Sources */,
 				6A05B7531EF1AFFB00E1C9A6 /* MyPhotoCollectionViewCell.m in Sources */,
@@ -321,6 +327,7 @@
 				6A05B74D1EF192F200E1C9A6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

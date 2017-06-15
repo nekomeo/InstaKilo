@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,36 +22,63 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Mos-Yk-viQ">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Mos-Yk-viQ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Y4r-oH-Fpu">
-                                    <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="Y4r-oH-Fpu">
+                                    <size key="itemSize" width="75" height="75"/>
+                                    <size key="headerReferenceSize" width="50" height="50"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="myCell" id="nH3-bu-HaV" customClass="MyPhotoCollectionViewCell">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" reuseIdentifier="myCell" id="nH3-bu-HaV" customClass="MyPhotoCollectionViewCell">
+                                        <rect key="frame" x="0.0" y="50" width="75" height="75"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eIg-sk-PSe">
-                                                    <rect key="frame" x="-159" y="-50" width="240" height="128"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eIg-sk-PSe">
+                                                    <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
                                                 </imageView>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" red="0.36943057200000001" green="1" blue="0.29943350520000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="eIg-sk-PSe" firstAttribute="top" secondItem="nH3-bu-HaV" secondAttribute="top" id="0Xe-pi-OIG"/>
+                                            <constraint firstAttribute="trailing" secondItem="eIg-sk-PSe" secondAttribute="trailing" id="Ip3-LW-gQZ"/>
+                                            <constraint firstItem="eIg-sk-PSe" firstAttribute="leading" secondItem="nH3-bu-HaV" secondAttribute="leading" id="PPz-2b-KDj"/>
+                                            <constraint firstAttribute="bottom" secondItem="eIg-sk-PSe" secondAttribute="bottom" id="nTG-FP-e2d"/>
+                                        </constraints>
                                         <connections>
                                             <outlet property="photoImageView" destination="eIg-sk-PSe" id="f7k-JN-Cml"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="headerView" id="oBr-uA-bHO" customClass="HeaderCollectionReusableView">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vKa-wH-UBL">
+                                            <rect key="frame" x="8" y="8" width="359" height="34"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="vKa-wH-UBL" firstAttribute="top" secondItem="oBr-uA-bHO" secondAttribute="topMargin" id="6tU-fB-Vdu"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="vKa-wH-UBL" secondAttribute="trailing" id="Nuu-ez-BLa"/>
+                                        <constraint firstItem="vKa-wH-UBL" firstAttribute="centerY" secondItem="oBr-uA-bHO" secondAttribute="centerY" id="XDa-gi-aJb"/>
+                                        <constraint firstItem="vKa-wH-UBL" firstAttribute="centerX" secondItem="oBr-uA-bHO" secondAttribute="centerX" id="jb8-Vz-YlZ"/>
+                                        <constraint firstItem="vKa-wH-UBL" firstAttribute="leading" secondItem="oBr-uA-bHO" secondAttribute="leadingMargin" id="n0I-65-9a1"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="vKa-wH-UBL" secondAttribute="bottom" id="xzp-C8-Ybg"/>
+                                    </constraints>
+                                    <connections>
+                                        <outlet property="headerCollectionLabel" destination="vKa-wH-UBL" id="pzh-D3-ogy"/>
+                                    </connections>
+                                </collectionReusableView>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="iBC-a8-udc"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="ikU-HG-nvS"/>
@@ -58,8 +86,26 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Mos-Yk-viQ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="4lF-fL-V2e"/>
+                            <constraint firstItem="Mos-Yk-viQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8Qn-D8-oZq"/>
+                            <constraint firstItem="Mos-Yk-viQ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="RXR-Uq-RjY"/>
+                            <constraint firstItem="Mos-Yk-viQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="bPp-Mf-8b3"/>
+                            <constraint firstAttribute="trailing" secondItem="Mos-Yk-viQ" secondAttribute="trailing" id="q2r-kB-DpJ"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Mos-Yk-viQ" secondAttribute="bottom" id="ss8-Vx-6oZ"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="l76-vy-UnN"/>
+                    <navigationItem key="navigationItem" id="l76-vy-UnN">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="gO3-rR-t0R">
+                            <rect key="frame" x="112.5" y="7" width="150" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Subject"/>
+                                <segment title="Location"/>
+                            </segments>
+                        </segmentedControl>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="Mos-Yk-viQ" id="GSG-s8-Vup"/>
                     </connections>
