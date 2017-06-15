@@ -38,6 +38,10 @@
     self.photosBySubject = @{@"General":@[krav, flower, taiChi, legoBatman, weddingSeal],
                              @"Food":@[pineappleBuns, pigs, dessert, iceCream, macarons]};
     
+    self.photosByLocation = @{@"Vancouver":@[krav, macarons, weddingSeal],
+                              @"San Francisco":@[flower, pineappleBuns, taiChi, pigs, dessert, legoBatman],
+                              @"Calgary":@[iceCream]};
+    
     self.sortBySubject = YES;
     
 }
@@ -50,15 +54,37 @@
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return self.photosBySubject.allKeys.count;
+    if (self.sortBySubject)
+    {
+        NSArray *subjectSections = [self.photosBySubject allKeys];
+        return subjectSections.count;
+    }
+    
+    else
+    {
+        NSArray *locationSections = [self.photosByLocation allKeys];
+        return locationSections.count;
+    }
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    NSArray * myPhotoSections = self.photosBySubject.allKeys;
-    NSString *thisKey = myPhotoSections[section];
-    NSArray * myObjects = [self.photosBySubject objectForKey:thisKey];
-    return myObjects.count;
+    if (self.sortBySubject)
+    {
+        NSArray *myPhotoSections = self.photosBySubject.allKeys;
+        NSString *thisKey = myPhotoSections[section];
+        NSArray *myObjects = [self.photosBySubject objectForKey:thisKey];
+        return myObjects.count;
+    }
+    
+    else
+    {
+        NSArray *myPhotoLocations = self.photosByLocation.allKeys;
+        NSString *locationKey = myPhotoLocations[section];
+        NSArray *myLocationObjects = [self.photosByLocation objectForKey:locationKey];
+        return myLocationObjects.count;
+    }
+    
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -67,12 +93,23 @@
     
     cell.backgroundColor = [UIColor greenColor];
 
-    NSArray * myImageSections = self.photosBySubject.allKeys;
-    NSString *thisKey = myImageSections[indexPath.section];
-    NSArray *myImageObjects = [self.photosBySubject objectForKey:thisKey];
-    PhotoObject * thisPhoto = [myImageObjects objectAtIndex:indexPath.row];
-    cell.photoImageView.image = thisPhoto.photo;
+    if (self.sortBySubject)
+    {
+        NSArray *myImageSections = self.photosBySubject.allKeys;
+        NSString *thisKey = myImageSections[indexPath.section];
+        NSArray *myImageObjects = [self.photosBySubject objectForKey:thisKey];
+        PhotoObject *thisPhoto = [myImageObjects objectAtIndex:indexPath.row];
+        cell.photoImageView.image = thisPhoto.photo;
+    }
     
+    else
+    {
+        NSArray *myImageLocations = self.photosByLocation.allKeys;
+        NSString *locationKey = myImageLocations[indexPath.section];
+        NSArray *myImageObjects = [self.photosByLocation objectForKey:locationKey];
+        PhotoObject *thisPhoto = [myImageObjects objectAtIndex:indexPath.row];
+        cell.photoImageView.image = thisPhoto.photo;
+    }
     
     return cell;
 }
@@ -82,14 +119,38 @@
     if ([kind isEqualToString:UICollectionElementKindSectionHeader])
     {
         HeaderCollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"headerView" forIndexPath:indexPath];
-        NSArray *subjects = [self.photosBySubject allKeys];
-        NSString *subject = [subjects objectAtIndex: indexPath.section];
-        headerView.headerCollectionLabel.text = [NSString stringWithFormat:@"%@", subject];
+        
+        if (self.sortBySubject)
+        {
+            NSArray *subjects = [self.photosBySubject allKeys];
+            NSString *subject = [subjects objectAtIndex: indexPath.section];
+            headerView.headerCollectionLabel.text = [NSString stringWithFormat:@"%@", subject];
+        }
+        
+        else
+        {
+            NSArray *locations = [self.photosByLocation allKeys];
+            NSString *location = [locations objectAtIndex:indexPath.section];
+            headerView.headerCollectionLabel.text = [NSString stringWithFormat:@"%@", location];
+        }
 
         return headerView;
     }
     return nil;
 }
 
+- (IBAction)didPressSort:(UISegmentedControl *)sender
+{
+    if (sender.selectedSegmentIndex == 0)
+    {
+        self.sortBySubject = YES;
+    }
+    
+    else
+    {
+        self.sortBySubject = NO;
+    }
+    [self.collectionView reloadData];
+}
 
 @end
